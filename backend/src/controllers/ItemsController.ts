@@ -11,11 +11,10 @@ export default class ItemsController {
         const serialazedItems = items.map(item => {
             return {
                 id: item.id,
-                title: item.name,
+                title: item.title,
                 image_url: `${API_CONFIG.baseUrl}/uploads/${item.image}`,
             };
         });
-
         return response.json(serialazedItems);
     }
 }

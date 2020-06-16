@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import api from '../../services/api';
 
 import './styles.css';
 
 import logo from '../../assets/logo.svg';
 
 const CreatePoint = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    api.get('items')
+      .then(response => {
+        setItems(response.data);
+      })
+
+      .catch(error => {
+
+      });
+  }, []);
+
   return (
     <div id="page-create-point">
       <header>
@@ -94,37 +108,16 @@ const CreatePoint = () => {
             <h2>Ítens de coleta</h2>
             <span>Selecione um ou mais itens abaixo</span>
           </legend>
-
+          
           <ul className="items-grid">
-            <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
-              <span>Oleo de cozinha</span>
-            </li>
-
-            <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
-              <span>Oleo de cozinha</span>
-            </li>
-
-            <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
-              <span>Oleo de cozinha</span>
-            </li>
-
-            <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
-              <span>Oleo de cozinha</span>
-            </li>
-
-            <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
-              <span>Oleo de cozinha</span>
-            </li>
-
-            <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
-              <span>Oleo de cozinha</span>
-            </li>
+            {
+              items.map(item => (
+                <li>
+                  <img src={item['image_url']} alt="" />
+                  <span>{item['nome']}</span>
+                </li>
+              ))
+            }
           </ul>
         </fieldset>
 
