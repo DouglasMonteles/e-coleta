@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 
 import './styles.css';
 
@@ -10,7 +11,7 @@ const CreatePoint = () => {
   return (
     <div id="page-create-point">
       <header>
-        <img src={logo} alt="Ecoleta"/>
+        <img src={logo} alt="Ecoleta" />
 
         <Link to="/">
           <FiArrowLeft />
@@ -19,7 +20,7 @@ const CreatePoint = () => {
       </header>
 
       <form>
-        <h1>Cadastro do <br/> ponto de coleta</h1>
+        <h1>Cadastro do <br /> ponto de coleta</h1>
 
         <fieldset>
           <legend>
@@ -28,7 +29,7 @@ const CreatePoint = () => {
 
           <div className="field">
             <label htmlFor="name">Nome da entidade</label>
-            <input 
+            <input
               type="text"
               name="name"
               id="name"
@@ -38,7 +39,7 @@ const CreatePoint = () => {
           <div className="field-group">
             <div className="field">
               <label htmlFor="email">E-mail</label>
-              <input 
+              <input
                 type="text"
                 name="email"
                 id="email"
@@ -47,7 +48,7 @@ const CreatePoint = () => {
 
             <div className="field">
               <label htmlFor="whatsapp">Whatsapp</label>
-              <input 
+              <input
                 type="text"
                 name="whatsapp"
                 id="whatsapp"
@@ -61,6 +62,15 @@ const CreatePoint = () => {
             <h2>Endereço</h2>
             <span>Selecione o endereço no mapa</span>
           </legend>
+
+          <Map center={[-15.9167842, -48.0585364]} zoom={15}>
+            <TileLayer
+              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+            <Marker position={[-15.9167842, -48.0585364]} />
+          </Map>
 
           <div className="field-group">
             <div className="field">
@@ -87,32 +97,32 @@ const CreatePoint = () => {
 
           <ul className="items-grid">
             <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt=""/>
+              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
               <span>Oleo de cozinha</span>
             </li>
 
             <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt=""/>
+              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
               <span>Oleo de cozinha</span>
             </li>
 
             <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt=""/>
+              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
               <span>Oleo de cozinha</span>
             </li>
 
             <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt=""/>
+              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
               <span>Oleo de cozinha</span>
             </li>
 
             <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt=""/>
+              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
               <span>Oleo de cozinha</span>
             </li>
 
             <li>
-              <img src="http://localhost:3333/uploads/oleo.svg" alt=""/>
+              <img src="http://localhost:3333/uploads/oleo.svg" alt="" />
               <span>Oleo de cozinha</span>
             </li>
           </ul>
